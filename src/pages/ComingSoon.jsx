@@ -41,6 +41,9 @@ const ComingSoon = () => {
 
                     <div className="w-3/4 bg-gradient-to-r from-transparent via-white/20 to-transparent h-[1px] my-6"></div>
 
+                    <p className="text-xs text-gray-400 tracking-widest uppercase font-medium mt-2">
+                        Powered By Pandawas Group
+                    </p>
                 </div>
             </div>
         </div>
