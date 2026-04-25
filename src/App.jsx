@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './pages/Hero';
 import AboutSection from './pages/AboutSection';
+import Testimonials from './pages/Testimonials';
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <AboutSection />
+      <Testimonials />
     </main>
   );
 };
