@@ -16,7 +16,7 @@ const NavFace = ({ theme, mobileOpen, setMobileOpen }) => {
   const ctaHoverBg = isLight ? 'hover:bg-black/[0.06]' : 'hover:bg-white/[0.06]';
   const ctaHoverShadow = isLight ? 'hover:shadow-[0_0_20px_rgba(0,0,0,0.06)]' : 'hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]';
   const containerBorder = isLight ? 'border-black/[0.08]' : 'border-white/[0.08]';
-  const containerBg = isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
+  const containerBg = isLight ? 'rgba(255,255,255,0.85)' : 'rgba(10,10,10,0.85)';
   const hamburgerBg = isLight ? 'bg-black/80' : 'bg-white/80';
   const hamburgerHover = isLight ? 'hover:bg-black/[0.06]' : 'hover:bg-white/[0.06]';
 

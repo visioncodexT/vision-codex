@@ -173,17 +173,31 @@ const AboutSection = () => {
     <section
       id="about-us"
       ref={sectionRef}
-      className="relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 overflow-hidden"
+      className="relative bg-black w-full py-24 sm:py-32 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 overflow-hidden"
     >
-      {/* ── Section Label ── */}
-      <div
-        className={`flex items-center gap-2 mb-10 sm:mb-14 transition-all duration-700
-          ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-      >
-        <span className="text-orange-500/80 text-xl font-mono tracking-[0.2em] uppercase">
+      {/* ── Section Header ── */}
+      <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <p
+          className={`text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4
+            transition-all duration-700
+            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        >
           [ About Us ]
-        </span>
-        <span className="text-orange-500/60 text-sm">↓</span>
+        </p>
+        <h2
+          className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6
+            transition-all duration-700 delay-100
+            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        >
+          Driven by Innovation & <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Excellence</span>
+        </h2>
+        <p
+          className={`text-white/50 text-base sm:text-lg leading-relaxed
+            transition-all duration-700 delay-200
+            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        >
+          We are a team of passionate creators, engineers, and strategists dedicated to delivering digital products that make a real impact.
+        </p>
       </div>
 
       {/* ═══════════════════════════════════════════
@@ -203,7 +217,7 @@ const AboutSection = () => {
 
         {/* ── Center: 3D Abstract Visual ── */}
         <div
-          className={`md:col-span-3 border border-white/10 rounded-2xl overflow-hidden
+          className={`md:col-span-3 border border-white/15 rounded-2xl overflow-hidden
             flex items-center justify-center min-h-[280px] sm:min-h-[320px] bg-[#050505]
             transition-all duration-700 delay-200
             ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}

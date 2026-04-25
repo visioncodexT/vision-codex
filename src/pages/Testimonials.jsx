@@ -65,7 +65,7 @@ const TestimonialCard = ({ testimonial, offset, onMouseEnter, onMouseLeave }) =>
       <div
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className="relative h-full rounded-2xl p-7 sm:p-8 border border-white/10
+        className="relative h-full rounded-2xl p-7 sm:p-8 border border-white/15
           bg-[#111111] transition-all duration-500 ease-out
           group-hover:bg-[#E8461E] group-hover:border-[#E8461E]/50
           group-hover:scale-[1.03] group-hover:shadow-[0_20px_60px_rgba(232,70,30,0.25)]"
@@ -142,28 +142,28 @@ const Testimonials = () => {
     >
       {/* Edge fades — section-level so they cover full height including staggered cards */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 pointer-events-none"
+        className="hidden sm:block absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 pointer-events-none"
         style={{ background: 'linear-gradient(to right, #F5F0EB, transparent)' }}
       />
       <div
-        className="absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 pointer-events-none"
+        className="hidden sm:block absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 pointer-events-none"
         style={{ background: 'linear-gradient(to left, #F5F0EB, transparent)' }}
       />
       {/* ── Section Header ── */}
       <div className="text-center px-6 mb-16 sm:mb-20">
         <p
-          className={`text-orange-600 text-xs font-mono tracking-[0.25em] uppercase mb-4
+          className={`text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4
             transition-all duration-700
             ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
-          {'{ Testimonials }'}
+          [ Testimonials ]
         </p>
         <h2
-          className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1a1a1a] tracking-tight leading-[1.1]
+          className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-[1.1]
             transition-all duration-700 delay-100
             ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
-          Don't take our word for it
+          Don't take our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">word</span> for it
           <span className="text-orange-600">*</span>
         </h2>
         <p
@@ -193,20 +193,20 @@ const Testimonials = () => {
         >
           {/* First set */}
           {testimonials.map((t, i) => (
-            <TestimonialCard 
-              key={`a-${i}`} 
-              testimonial={t} 
-              offset={offsets[i % offsets.length]} 
+            <TestimonialCard
+              key={`a-${i}`}
+              testimonial={t}
+              offset={offsets[i % offsets.length]}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             />
           ))}
           {/* Duplicate for seamless loop */}
           {testimonials.map((t, i) => (
-            <TestimonialCard 
-              key={`b-${i}`} 
-              testimonial={t} 
-              offset={offsets[i % offsets.length]} 
+            <TestimonialCard
+              key={`b-${i}`}
+              testimonial={t}
+              offset={offsets[i % offsets.length]}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             />
