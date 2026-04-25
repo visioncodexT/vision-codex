@@ -1,10 +1,15 @@
-import ComingSoon from './pages/ComingSoon';
-
+import Navbar from './components/Navbar';
+import Hero from './pages/Hero';
+import AboutSection from './pages/AboutSection';
 
 const App = () => {
   return (
-    <ComingSoon />
-  )
-}
+    <main className="bg-black min-h-screen">
+      <Navbar />
+      <Hero />
+      <AboutSection />
+    </main>
+  );
+};
 
-export default App
+export default App;
