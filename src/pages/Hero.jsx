@@ -10,7 +10,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="relative min-h-screen w-full overflow-hidden bg-black noise-overlay">
+        <section className="relative min-h-screen w-full overflow-hidden bg-black ">
             {/* ── Ambient radial glow behind text ── */}
             <div
                 className="absolute top-1/2 left-[20%] -translate-x-1/2 -translate-y-1/2
