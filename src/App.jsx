@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './pages/Hero';
 import AboutSection from './pages/AboutSection';
+import ProcessSection from './pages/ProcessSection';
 import Testimonials from './pages/Testimonials';
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <AboutSection />
+      <ProcessSection />
       <Testimonials />
     </main>
   );
