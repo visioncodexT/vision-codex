@@ -1,0 +1,6 @@
+# https://www.visiontechx.com - Vision TechX by Pandawas Group
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.visiontechx.com/sitemap.xml
