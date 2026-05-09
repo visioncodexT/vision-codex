@@ -40,7 +40,6 @@ const ComingSoon = () => {
     }, []);
 
     const timeUnits = [
-        { label: 'Days', value: timeLeft.days },
         { label: 'Hours', value: timeLeft.hours },
         { label: 'Minutes', value: timeLeft.minutes },
         { label: 'Seconds', value: timeLeft.seconds },
