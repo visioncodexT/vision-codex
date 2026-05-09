@@ -30,42 +30,32 @@ const ContactSection = () => {
     e.preventDefault();
     setStatus({ submitting: true, submitted: false, error: null });
 
-    try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+    // 1. Trigger the backend request (Fire and Forget/Background)
+    const sendPromise = fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    }).catch(err => console.error('Background submission error:', err));
+
+    // 2. Optimistic UI: Wait for a short aesthetic delay, then show success
+    // This makes the app feel snappy regardless of backend speed
+    setTimeout(() => {
+      setStatus({ submitting: false, submitted: true, error: null });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        company: '',
+        subject: '',
+        message: ''
       });
-
-      const responseText = await response.text();
-      let data;
-      try {
-        data = JSON.parse(responseText);
-      } catch (parseError) {
-        data = { error: responseText.slice(0, 150) || 'An unexpected server error occurred.' };
-      }
-
-      if (response.ok) {
-        setStatus({ submitting: false, submitted: true, error: null });
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          company: '',
-          subject: '',
-          message: ''
-        });
-        setTimeout(() => setStatus(prev => ({ ...prev, submitted: false })), 5000);
-      } else {
-        throw new Error(data.error || 'Failed to send message');
-      }
-    } catch (err) {
-      console.error('Submission error:', err);
-      setStatus({ submitting: false, submitted: false, error: err.message });
-    }
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setStatus(prev => ({ ...prev, submitted: false })), 5000);
+    }, 1500);
   };
 
   return (
