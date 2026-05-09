@@ -1,6 +1,51 @@
+import { useState, useEffect } from 'react';
 import LightRays from './LightRays';
 
 const ComingSoon = () => {
+
+    // ============================================================
+    // 🚀 LAUNCH DATE CONFIGURATION — Change the date & time below
+    // Format: new Date(year, monthIndex, day, hours, minutes, seconds)
+    // Note: monthIndex is 0-based (January = 0, May = 4, December = 11)
+    // Current target: 10 May 2026, 10:15 AM (IST / local time)
+    // ============================================================
+    const LAUNCH_DATE = new Date(2026, 4, 10, 10, 15, 0);
+    // ============================================================
+    // 🚀 END LAUNCH DATE CONFIGURATION
+    // ============================================================
+
+    const calculateTimeLeft = () => {
+        const now = new Date();
+        const difference = LAUNCH_DATE - now;
+
+        if (difference <= 0) {
+            return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        }
+
+        return {
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / (1000 * 60)) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+        };
+    };
+
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const timeUnits = [
+        { label: 'Days', value: timeLeft.days },
+        { label: 'Hours', value: timeLeft.hours },
+        { label: 'Minutes', value: timeLeft.minutes },
+        { label: 'Seconds', value: timeLeft.seconds },
+    ];
+
     return (
         <div className='bg-black overflow-hidden flex items-center justify-center' style={{ width: '100vw', height: '100vh', position: 'relative' }}>
             <div className="absolute inset-0 z-0">
@@ -21,6 +66,32 @@ const ComingSoon = () => {
                 />
             </div>
 
+            {/* Countdown keyframe animations */}
+            <style>{`
+                @keyframes countdown-pulse {
+                    0%, 100% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.4; transform: scale(0.8); }
+                }
+                @keyframes countdown-glow {
+                    0%, 100% { box-shadow: 0 0 15px rgba(255,255,255,0.05), inset 0 0 15px rgba(255,255,255,0.02); }
+                    50% { box-shadow: 0 0 25px rgba(255,255,255,0.1), inset 0 0 25px rgba(255,255,255,0.04); }
+                }
+                @keyframes digit-flip {
+                    0% { transform: translateY(0); opacity: 1; }
+                    50% { transform: translateY(-4px); opacity: 0.6; }
+                    100% { transform: translateY(0); opacity: 1; }
+                }
+                .countdown-card {
+                    animation: countdown-glow 3s ease-in-out infinite;
+                }
+                .countdown-dot {
+                    animation: countdown-pulse 1s ease-in-out infinite;
+                }
+                .digit-animate {
+                    animation: digit-flip 0.4s ease-out;
+                }
+            `}</style>
+
             <div className="relative z-10 flex items-center justify-center px-4 w-full h-full">
                 <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 md:p-14 shadow-2xl flex flex-col items-center text-center max-w-xl w-full transform transition-all hover:scale-[1.02] duration-500">
                     <img
@@ -34,10 +105,39 @@ const ComingSoon = () => {
                         Coming Soon
                     </h1>
 
-                    <p className="text-lg md:text-xl text-gray-300 mt-4 mb-8 font-light leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-300 mt-4 mb-6 font-light leading-relaxed">
                         Stay tuned. Something extraordinary is being built at <br className="hidden md:block" />
                         <strong className="font-semibold text-white tracking-wider">Vision TechX</strong>.
                     </p>
+
+                    {/* ── Countdown Timer ── */}
+                    <div className="w-full flex items-center justify-center gap-2 sm:gap-3 md:gap-4 my-4">
+                        {timeUnits.map((unit, index) => (
+                            <div key={unit.label} className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                                {/* Single time unit card */}
+                                <div className="countdown-card flex flex-col items-center backdrop-blur-md bg-white/[0.04] border border-white/10 rounded-2xl px-3 py-3 sm:px-4 sm:py-4 md:px-5 md:py-5 min-w-[60px] sm:min-w-[72px] md:min-w-[85px] transition-all duration-300 hover:bg-white/[0.08] hover:border-white/20">
+                                    <span
+                                        key={unit.value}
+                                        className="digit-animate text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 tabular-nums leading-none"
+                                    >
+                                        {String(unit.value).padStart(2, '0')}
+                                    </span>
+                                    <span className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.2em] mt-2 font-medium">
+                                        {unit.label}
+                                    </span>
+                                </div>
+
+                                {/* Pulsing dot separator (not after the last unit) */}
+                                {index < timeUnits.length - 1 && (
+                                    <div className="flex flex-col gap-1.5">
+                                        <span className="countdown-dot block w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                                        <span className="countdown-dot block w-1.5 h-1.5 rounded-full bg-white/40" style={{ animationDelay: '0.3s' }}></span>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    {/* ── End Countdown Timer ── */}
 
                     <div className="w-3/4 bg-gradient-to-r from-transparent via-white/20 to-transparent h-[1px] my-6"></div>
 
