@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { FadeUp, SlideIn, StaggerContainer, StaggerItem, motion } from '../utils/animations';
+
 
 
 
@@ -140,64 +141,48 @@ const techStack = [
 
 /* ── Stat Box ── */
 const StatBox = ({ number, label }) => (
-  <div className="border border-white/15 bg-[#050505] backdrop-blur-xl rounded-2xl p-6 sm:p-7 group hover:border-white/20 transition-colors duration-500 flex flex-col justify-center items-center">
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, y: 30 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+    }}
+    whileHover={{ y: -4, scale: 1.02, transition: { duration: 0.25 } }}
+    className="border border-white/15 bg-[#050505] backdrop-blur-xl rounded-2xl p-6 sm:p-7 group hover:border-white/20 transition-colors duration-500 flex flex-col justify-center items-center cursor-default"
+  >
     <p className="text-4xl sm:text-5xl font-bold text-white leading-none">
       {number}
     </p>
     <p className="text-[11px] text-white/40 mt-2 uppercase tracking-[0.15em] font-medium text-center">
       {label}
     </p>
-  </div>
+  </motion.div>
 );
 
 /* ── Main About Section ── */
 const AboutSection = () => {
-  const sectionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
       id="about-us"
-      ref={sectionRef}
       className="relative bg-black w-full py-24 sm:py-32 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 overflow-hidden"
     >
       {/* ── Section Header ── */}
       <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-        <p
-          className={`text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4
-            transition-all duration-700
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-        >
-          [ About Us ]
-        </p>
-        <h2
-          className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6
-            transition-all duration-700 delay-100
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-        >
-          Driven by Innovation & <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Excellence</span>
-        </h2>
-        <p
-          className={`text-white/50 text-base sm:text-lg leading-relaxed
-            transition-all duration-700 delay-200
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-        >
-          We are a team of passionate creators, engineers, and strategists dedicated to delivering digital products that make a real impact.
-        </p>
+        <FadeUp>
+          <p className="text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4">
+            [ About Us ]
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.1}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+            Driven by Innovation & <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Excellence</span>
+          </h2>
+        </FadeUp>
+        <FadeUp delay={0.2}>
+          <p className="text-white/50 text-base sm:text-lg leading-relaxed">
+            We are a team of passionate creators, engineers, and strategists dedicated to delivering digital products that make a real impact.
+          </p>
+        </FadeUp>
       </div>
 
       {/* ═══════════════════════════════════════════
@@ -206,35 +191,27 @@ const AboutSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 mb-3 sm:mb-4">
 
         {/* ── Left: Stats Boxes ── */}
-        <div
-          className={`md:col-span-3 flex flex-col gap-3 sm:gap-4 transition-all duration-700 delay-100
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-        >
+        <StaggerContainer stagger={0.12} className="md:col-span-3 flex flex-col gap-3 sm:gap-4">
           <StatBox number="10+" label="Projects Delivered" />
           <StatBox number="5+" label="Happy Clients" />
           <StatBox number="1+" label="Years of Experience" />
-        </div>
+        </StaggerContainer>
 
         {/* ── Center: 3D Abstract Visual ── */}
-        <div
-          className={`md:col-span-3 border border-white/15 rounded-2xl overflow-hidden
-            flex items-center justify-center min-h-[280px] sm:min-h-[320px] bg-[#050505]
-            transition-all duration-700 delay-200
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-        >
-          <img
+        <FadeUp delay={0.15} className="md:col-span-3 border border-white/15 rounded-2xl overflow-hidden
+            flex items-center justify-center min-h-[280px] sm:min-h-[320px] bg-[#050505]">
+          <motion.img
             src="/metal-logo.png"
             alt="Abstract 3D visual"
-            className="w-[75%] h-auto object-contain opacity-90 hover:scale-105 transition-transform duration-700"
+            className="w-[75%] h-auto object-contain opacity-90"
+            whileHover={{ scale: 1.08, rotate: 2 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           />
-        </div>
+        </FadeUp>
 
         {/* ── Right: Location Card ── */}
-        <div
-          className={`md:col-span-6 border border-white/15 rounded-2xl p-8 sm:p-10
-            relative overflow-hidden min-h-[280px] sm:min-h-[320px] bg-[#050505]
-            transition-all duration-700 delay-300
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        <FadeUp delay={0.25} className="md:col-span-6 border border-white/15 rounded-2xl p-8 sm:p-10
+            relative overflow-hidden min-h-[280px] sm:min-h-[320px] bg-[#050505]"
         >
           {/* Text */}
           <div className="relative z-10">
@@ -256,7 +233,7 @@ const AboutSection = () => {
           <div className="absolute bottom-0 left-0 right-0 opacity-75">
             <img src="/image.png" alt="Globe" className="w-full h-full object-contain hover:scale-105 transition-transform duration-700" />
           </div>
-        </div>
+        </FadeUp>
       </div>
 
       {/* ═══════════════════════════════════════════
@@ -265,10 +242,8 @@ const AboutSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 mb-3 sm:mb-4">
 
         {/* ── Left: About Bio (expanded) ── */}
-        <div
-          className={`md:col-span-8 border border-white/15 rounded-2xl p-7 sm:p-8 lg:p-10
-            flex flex-col justify-between bg-[#050505] relative transition-all duration-700 delay-[400ms]
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        <SlideIn from="left" delay={0.1} className="md:col-span-8 border border-white/15 rounded-2xl p-7 sm:p-8 lg:p-10
+            flex flex-col justify-between bg-[#050505] relative"
         >
           {/* Subtle top glow */}
           <div
@@ -322,13 +297,11 @@ const AboutSection = () => {
               </a>
             </div>
           </div>
-        </div>
+        </SlideIn>
 
         {/* ── Right: Why Choose Us ── */}
-        <div
-          className={`md:col-span-4 border border-white/15 rounded-2xl overflow-hidden
-            flex flex-col bg-[#050505] relative transition-all duration-700 delay-[600ms]
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        <SlideIn from="right" delay={0.2} className="md:col-span-4 border border-white/15 rounded-2xl overflow-hidden
+            flex flex-col bg-[#050505] relative"
         >
           {/* Subtle top glow accent */}
           <div
@@ -389,17 +362,15 @@ const AboutSection = () => {
               <span className="group-hover/learn:translate-x-1 transition-transform duration-300">→</span>
             </a>
           </div>
-        </div>
+        </SlideIn>
       </div>
 
       {/* ═══════════════════════════════════════════
           TECH STACK TOOLBOX
           ═══════════════════════════════════════════ */}
-      <div
-        className={`border border-white/15 rounded-2xl px-6 sm:px-8 py-5 sm:py-6
+      <FadeUp delay={0.15} className="border border-white/15 rounded-2xl px-6 sm:px-8 py-5 sm:py-6
           flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10
-          bg-[#050505] transition-all duration-700 delay-700
-          ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          bg-[#050505]"
       >
         {/* Label */}
         <div className="flex-shrink-0">
@@ -417,13 +388,15 @@ const AboutSection = () => {
         {/* Icons */}
         <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
           {techStack.map((tech) => (
-            <div
+            <motion.div
               key={tech.name}
               className="group/tech flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14
                 rounded-xl bg-white/[0.03] border border-white/15
                 hover:bg-white/[0.07] hover:border-white/20
-                transition-all duration-300 cursor-default relative"
+                transition-colors duration-300 cursor-default relative"
               title={tech.name}
+              whileHover={{ scale: 1.15, y: -3 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
             >
               {tech.icon}
               {/* Tooltip */}
@@ -432,10 +405,10 @@ const AboutSection = () => {
                 duration-300 whitespace-nowrap pointer-events-none">
                 {tech.name}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </FadeUp>
     </section>
   );
 };

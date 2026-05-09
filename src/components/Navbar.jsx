@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
 const navLinks = ['Home', 'Services', 'About Us', 'Testimonials'];
 
@@ -28,31 +29,37 @@ const NavFace = ({ theme, mobileOpen, setMobileOpen }) => {
         style={{ background: containerBg }}
       >
         {/* Logo */}
-        <div className="flex items-center justify-center w-10 h-10 rounded-full ml-1">
+        <motion.div 
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          className="flex items-center justify-center w-10 h-10 rounded-full ml-1"
+        >
           <img src={logoSrc} alt="VisionTechX" className="w-8 h-8 object-contain" />
-        </div>
+        </motion.div>
 
         {/* Links */}
         <ul className="flex items-center gap-0.5 px-4">
           {navLinks.map((link) => (
             <li key={link}>
-              <a
+              <motion.a
                 href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                whileHover={{ scale: 1.05, y: -1 }}
                 className={`relative px-4 py-2 text-[13px] font-medium ${textColor} ${textHover} transition-colors duration-300 rounded-full ${bgHover} block`}
               >
                 {link}
-              </a>
+              </motion.a>
             </li>
           ))}
         </ul>
 
         {/* CTA */}
-        <a
+        <motion.a
           href="#contact"
+          whileHover={{ scale: 1.05, y: -1 }}
+          whileTap={{ scale: 0.98 }}
           className={`px-5 py-2 text-[13px] font-medium ${ctaText} rounded-full border ${ctaBorder} ${ctaHoverBorder} ${textHover} ${ctaHoverBg} ${ctaHoverShadow} transition-all duration-300 uppercase tracking-wider whitespace-nowrap`}
         >
           Contact Us
-        </a>
+        </motion.a>
       </div>
 
       {/* ── Mobile Navbar ── */}
@@ -71,8 +78,14 @@ const NavFace = ({ theme, mobileOpen, setMobileOpen }) => {
           className={`relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-full ${hamburgerHover} transition-colors`}
           aria-label="Toggle menu"
         >
-          <span className={`block w-5 h-[1.5px] ${hamburgerBg} rounded-full transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[4.5px]' : ''}`} />
-          <span className={`block w-5 h-[1.5px] ${hamburgerBg} rounded-full transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[4.5px]' : ''}`} />
+          <motion.span 
+            animate={mobileOpen ? { rotate: 45, y: 4.5 } : { rotate: 0, y: 0 }}
+            className={`block w-5 h-[1.5px] ${hamburgerBg} rounded-full transition-all duration-300`} 
+          />
+          <motion.span 
+            animate={mobileOpen ? { rotate: -45, y: -4.5 } : { rotate: 0, y: 0 }}
+            className={`block w-5 h-[1.5px] ${hamburgerBg} rounded-full transition-all duration-300`} 
+          />
         </button>
       </div>
     </>
@@ -80,15 +93,8 @@ const NavFace = ({ theme, mobileOpen, setMobileOpen }) => {
 };
 
 const Navbar = () => {
-  const [visible, setVisible] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
-
-  // Initial load animation
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Lock body scroll on mobile menu
   useEffect(() => {
@@ -110,7 +116,6 @@ const Navbar = () => {
 
       lightSections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        // If the navbar's center point is within the section bounds
         if (rect.top <= navMiddle && rect.bottom >= navMiddle) {
           currentlyLight = true;
         }
@@ -120,18 +125,20 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check on mount
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <>
-      <nav
+      <motion.nav
         id="main-nav"
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700
-          ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'} 
-          [perspective:1000px] pointer-events-none`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700
+          [perspective:1000px] pointer-events-none"
       >
         <div
           className={`relative transition-transform duration-[800ms] ease-[cubic-bezier(0.175,0.885,0.32,1.275)] [transform-style:preserve-3d] pointer-events-auto
@@ -147,53 +154,64 @@ const Navbar = () => {
             <NavFace theme="light" mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* ── Mobile Menu Overlay ── */}
-      {/* Kept outside the 3D container so it doesn't get flipped */}
-      <div
-        className={`md:hidden fixed inset-0 top-20 z-40 transition-all duration-500
-          ${mobileOpen
-            ? 'opacity-100 pointer-events-auto'
-            : 'opacity-0 pointer-events-none'}`}
-      >
-        <div
-          className="absolute inset-0 backdrop-blur-2xl"
-          style={{ background: 'rgba(0,0,0,0.9)' }}
-        />
-        <div className="relative z-10 flex flex-col items-center pt-12 gap-2">
-          {navLinks.map((link, i) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
-              onClick={() => setMobileOpen(false)}
-              className="text-2xl font-medium text-white/70 hover:text-white
-                transition-all duration-300 py-3"
-              style={{
-                transitionDelay: mobileOpen ? `${i * 80}ms` : '0ms',
-                opacity: mobileOpen ? 1 : 0,
-                transform: mobileOpen ? 'translateY(0)' : 'translateY(16px)',
-              }}
-            >
-              {link}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
-            className="mt-6 px-8 py-3 text-sm font-medium text-white/80 rounded-full
-              border border-white/[0.2] hover:border-white/[0.4] hover:text-white
-              transition-all duration-300 uppercase tracking-wider"
-            style={{
-              transitionDelay: mobileOpen ? `${navLinks.length * 80}ms` : '0ms',
-              opacity: mobileOpen ? 1 : 0,
-              transform: mobileOpen ? 'translateY(0)' : 'translateY(16px)',
-            }}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="md:hidden fixed inset-0 top-20 z-40 pointer-events-auto"
           >
-            Contact Us
-          </a>
-        </div>
-      </div>
+            <div
+              className="absolute inset-0 backdrop-blur-2xl"
+              style={{ background: 'rgba(0,0,0,0.9)' }}
+            />
+            <motion.div 
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={{
+                open: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+                closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+              }}
+              className="relative z-10 flex flex-col items-center pt-12 gap-2"
+            >
+              {navLinks.map((link) => (
+                <motion.a
+                  key={link}
+                  href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                  onClick={() => setMobileOpen(false)}
+                  variants={{
+                    open: { opacity: 1, y: 0 },
+                    closed: { opacity: 0, y: 16 }
+                  }}
+                  className="text-2xl font-medium text-white/70 hover:text-white
+                    transition-colors duration-300 py-3"
+                >
+                  {link}
+                </motion.a>
+              ))}
+              <motion.a
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
+                variants={{
+                  open: { opacity: 1, y: 0 },
+                  closed: { opacity: 0, y: 16 }
+                }}
+                className="mt-6 px-8 py-3 text-sm font-medium text-white/80 rounded-full
+                  border border-white/[0.2] hover:border-white/[0.4] hover:text-white
+                  transition-all duration-300 uppercase tracking-wider"
+              >
+                Contact Us
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -1,18 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
+import { FadeUp, ScaleIn, StaggerContainer, StaggerItem } from '../utils/animations';
 
 const Hero = () => {
-    const [loaded, setLoaded] = useState(false);
     const videoRef = useRef(null);
 
-    useEffect(() => {
-        const timer = setTimeout(() => setLoaded(true), 400);
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
-        <section className="relative min-h-screen w-full overflow-hidden bg-black ">
+        <section id="home" className="relative min-h-screen w-full overflow-hidden bg-black ">
             {/* ── Ambient radial glow behind text ── */}
-            <div
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 2, ease: "easeOut" }}
                 className="absolute top-1/2 left-[20%] -translate-x-1/2 -translate-y-1/2
           w-[700px] h-[700px] rounded-full pointer-events-none z-[2]"
                 style={{
@@ -21,7 +20,12 @@ const Hero = () => {
             />
 
             {/* ── Video Background (right half) ── */}
-            <div className="absolute inset-0 z-[1]">
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="absolute inset-0 z-[1]"
+            >
                 {/* The video, positioned on the right */}
                 <div className="absolute top-0 right-0 w-full md:w-[60%] h-full">
                     <video
@@ -36,86 +40,72 @@ const Hero = () => {
                     </video>
 
                     {/* Gradient fades to blend into black */}
-                    {/* Left fade */}
                     <div
                         className="absolute inset-y-0 left-0 w-[60%] pointer-events-none"
                         style={{
                             background: 'linear-gradient(to right, #000000 0%, rgba(0,0,0,0.85) 40%, transparent 100%)',
                         }}
                     />
-                    {/* Bottom fade */}
                     <div
                         className="absolute bottom-0 left-0 right-0 h-[30%] pointer-events-none"
                         style={{
                             background: 'linear-gradient(to top, #000000, transparent)',
                         }}
                     />
-                    {/* Top fade */}
                     <div
                         className="absolute top-0 left-0 right-0 h-[20%] pointer-events-none"
                         style={{
                             background: 'linear-gradient(to bottom, #000000, transparent)',
                         }}
                     />
-                    {/* Overall dim overlay */}
                     <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 </div>
-            </div>
+            </motion.div>
 
             {/* ── Hero Content ── */}
             <div className="relative z-[3] flex items-center min-h-screen px-6 sm:px-10 md:px-16 lg:px-24">
                 <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-24">
                     {/* ── Left Column: Text ── */}
-                    <div className="flex flex-col gap-8">
-                        {/* Heading */}
-                        <h1
-                            className={`text-4xl sm:text-6xl lg:text-7xl xl:text-[4.25rem] font-bold leading-[1.08] tracking-tight text-white transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                            style={{ transitionDelay: '0.2s' }}
-                        >
-                            We Build Powerful Digital Solutions for Your Business
-                        </h1>
+                    <StaggerContainer delay={0.2} stagger={0.1} className="flex flex-col gap-8">
+                        <StaggerItem>
+                            <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-[4.25rem] font-bold leading-[1.08] tracking-tight text-white">
+                                We Build Powerful Digital Solutions for Your Business
+                            </h1>
+                        </StaggerItem>
 
-                        {/* Subtitle (Optional addition) */}
-                        <p
-                            className={`text-base sm:text-lg text-white/40 max-w-md leading-relaxed font-light
-                transition-all duration-1000
-                ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                            style={{ transitionDelay: '0.4s' }}
-                        >
-                            Vision TechX helps startups and businesses design, develop, and scale modern websites and applications that drive real growth.
-                        </p>
+                        <StaggerItem>
+                            <p className="text-base sm:text-lg text-white/40 max-w-md leading-relaxed font-light">
+                                Vision TechX helps startups and businesses design, develop, and scale modern websites and applications that drive real growth.
+                            </p>
+                        </StaggerItem>
 
-                        {/* CTA Buttons */}
-                        <div
-                            className={`flex flex-wrap gap-4 transition-all duration-1000
-                ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                            style={{ transitionDelay: '0.6s' }}
-                        >
+                        <StaggerItem className="flex flex-wrap gap-4">
                             {/* Primary */}
-                            <a
-                                href="#demo"
-                                id="hero-cta-primary"
+                            <motion.a
+                                href="#contact"
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.98 }}
                                 className="group relative px-7 py-3.5 bg-white text-black text-sm font-semibold
-                  rounded-full uppercase tracking-wider
-                  hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]
-                  active:scale-[0.98] transition-all duration-300"
+                                    rounded-full uppercase tracking-wider
+                                    hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]
+                                    transition-all duration-300"
                             >
                                 Get Free Consultation
-                            </a>
+                            </motion.a>
 
                             {/* Secondary */}
-                            <a
-                                href="#download"
-                                id="hero-cta-secondary"
+                            <motion.a
+                                href="#services"
+                                whileHover={{ scale: 1.03, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                                whileTap={{ scale: 0.98 }}
                                 className="group px-7 py-3.5 text-white/80 text-sm font-semibold rounded-full
-                  uppercase tracking-wider border border-white/[0.2]
-                  hover:border-white/[0.4] hover:bg-white/[0.06] hover:text-white
-                  hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+                                    uppercase tracking-wider border border-white/[0.2]
+                                    transition-all duration-300"
                             >
                                 View Our Work
-                            </a>
-                        </div>
-                    </div>
+                            </motion.a>
+                        </StaggerItem>
+                    </StaggerContainer>
 
                     {/* ── Right Column: (empty – video shows through) ── */}
                     <div className="hidden md:block" />
@@ -123,20 +113,20 @@ const Hero = () => {
             </div>
 
             {/* ── Floating Glass Card ── */}
-            <div
-                className={`absolute bottom-10 right-6 sm:right-10 md:right-16 lg:right-24 z-[4]
-          transition-all duration-1000
-          ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ transitionDelay: '0.9s' }}
-            >
-                <div
+            <FadeUp delay={1} className="absolute bottom-10 right-6 sm:right-10 md:right-16 lg:right-24 z-[4]">
+                <motion.div
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="flex items-center gap-3 px-5 py-4 rounded-2xl border border-white/[0.08]
-            backdrop-blur-xl animate-float"
+                        backdrop-blur-xl"
                     style={{ background: 'rgba(255,255,255,0.04)' }}
                 >
-                    {/* Glowing dot */}
                     <div className="relative flex-shrink-0">
-                        <div className="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse-glow" />
+                        <motion.div 
+                            animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-2.5 h-2.5 rounded-full bg-orange-500" 
+                        />
                         <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-orange-400/40 blur-sm" />
                     </div>
                     <div>
@@ -147,16 +137,17 @@ const Hero = () => {
                             Building scalable digital solutions
                         </p>
                     </div>
-                    {/* Spark icon */}
-                    <svg
+                    <motion.svg
+                        animate={{ rotate: [0, 15, 0] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         className="w-5 h-5 text-orange-400/60 flex-shrink-0 ml-1"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                     >
                         <path d="M10 2L12.39 7.26L18 8.27L14 12.14L14.82 18L10 15.27L5.18 18L6 12.14L2 8.27L7.61 7.26L10 2Z" />
-                    </svg>
-                </div>
-            </div>
+                    </motion.svg>
+                </motion.div>
+            </FadeUp>
         </section>
     );
 };

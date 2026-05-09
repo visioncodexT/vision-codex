@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { FadeUp, motion } from '../utils/animations';
 
 /* ── Testimonial Data ── */
 const testimonials = [
@@ -44,13 +45,14 @@ const TestimonialCard = ({ testimonial, offset, onMouseEnter, onMouseLeave }) =>
       className="group relative flex-shrink-0 w-[320px] sm:w-[360px] cursor-default"
       style={{ transform: `translateY(${offset}px)` }}
     >
-      <div
+      <motion.div
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        whileHover={{ scale: 1.03 }}
         className="relative h-full rounded-2xl p-7 sm:p-8 border border-white/15
           bg-[#111111] transition-all duration-500 ease-out
           group-hover:bg-[#E8461E] group-hover:border-[#E8461E]/50
-          group-hover:scale-[1.03] group-hover:shadow-[0_20px_60px_rgba(232,70,30,0.25)]"
+          group-hover:shadow-[0_20px_60px_rgba(232,70,30,0.25)]"
       >
         {/* Quote mark - top left */}
         <svg
@@ -90,7 +92,7 @@ const TestimonialCard = ({ testimonial, offset, onMouseEnter, onMouseLeave }) =>
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
@@ -133,28 +135,22 @@ const Testimonials = () => {
       />
       {/* ── Section Header ── */}
       <div className="text-center px-6 mb-16 sm:mb-20">
-        <p
-          className={`text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4
-            transition-all duration-700
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-        >
-          [ Testimonials ]
-        </p>
-        <h2
-          className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-[1.1]
-            transition-all duration-700 delay-100
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-        >
-          Don't take our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">word</span> for it
-          <span className="text-orange-600">*</span>
-        </h2>
-        <p
-          className={`text-orange-600 text-xs font-mono tracking-[0.2em] uppercase mt-3
-            transition-all duration-700 delay-200
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-        >
-          *Take Theirs
-        </p>
+        <FadeUp>
+          <p className="text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4">
+            [ Testimonials ]
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.1}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#1a1a1a] tracking-tight leading-[1.1]">
+            Don't take our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">word</span> for it
+            <span className="text-orange-600">*</span>
+          </h2>
+        </FadeUp>
+        <FadeUp delay={0.2}>
+          <p className="text-orange-600 text-xs font-mono tracking-[0.2em] uppercase mt-3">
+            *Take Theirs
+          </p>
+        </FadeUp>
       </div>
 
       {/* ── Marquee Carousel ── */}

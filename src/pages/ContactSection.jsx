@@ -1,56 +1,32 @@
-import { useState, useRef, useEffect } from 'react';
+import { FadeUp, ScaleIn, motion } from '../utils/animations';
 
 const ContactSection = () => {
-  const sectionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
       id="contact"
-      ref={sectionRef}
       className="relative w-full py-24 sm:py-32 overflow-hidden bg-[#050505]"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
 
         {/* ── Section Header ── */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <p
-            className={`text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4
-              transition-all duration-700 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            [ Get In Touch ]
-          </p>
-          <h2
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6
-              transition-all duration-700 delay-100 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Great</span>
-          </h2>
+          <FadeUp>
+            <p className="text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4">
+              [ Get In Touch ]
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6">
+              Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Great</span>
+            </h2>
+          </FadeUp>
         </div>
 
         <div className="flex flex-col gap-12 lg:gap-16">
 
           {/* ── Contact Info Cards (Image 1) ── */}
-          <div
-            className={`flex flex-col gap-8 transition-all duration-1000 delay-200 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          >
+          <FadeUp delay={0.15} className="flex flex-col gap-8">
             {/* Email Section */}
             <div className="rounded-3xl border border-white/15 bg-[#0a0a0a]/50 p-8 sm:p-10 backdrop-blur-sm">
               <h3 className="text-white text-center font-medium text-lg mb-10">Contact Us Via Email</h3>
@@ -148,14 +124,10 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeUp>
 
           {/* ── Contact Form (Image 2) ── */}
-          <div
-            className={`rounded-3xl border border-white/5 bg-[#0a0a0a]/50 p-8 sm:p-12 backdrop-blur-sm
-              transition-all duration-1000 delay-400 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          >
+          <FadeUp delay={0.25} className="rounded-3xl border border-white/5 bg-[#0a0a0a]/50 p-8 sm:p-12 backdrop-blur-sm">
             <div className="text-center mb-10">
               <h3 className="text-white font-medium text-xl mb-2">Online Inquiry Form</h3>
               <p className="text-white/40 text-sm">Please fill in the following details, and we'll get back to you within 24 hours.</p>
@@ -255,7 +227,7 @@ const ContactSection = () => {
               </div>
 
             </form>
-          </div>
+          </FadeUp>
 
         </div>
       </div>

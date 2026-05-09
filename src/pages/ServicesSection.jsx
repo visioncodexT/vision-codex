@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { FadeUp, StaggerContainer, StaggerItem, motion } from '../utils/animations';
 
 const services = [
   {
@@ -145,18 +145,32 @@ const CustomIcons = [
   <AbstractIcons.ConsultingStrategy key="8" />,
 ];
 
-const ServiceCard = ({ service, index, className = '' }) => (
-  <div
-    className={`group relative flex flex-col p-6 sm:p-8 rounded-3xl border border-white/15 bg-[#111111]/80 backdrop-blur-md 
-      hover:bg-[#1a1a1a] hover:border-white/20 transition-all duration-500 ease-out overflow-hidden ${className}`}
+const ServiceCard = ({ service, index }) => (
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, y: 40, scale: 0.95 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+      },
+    }}
+    whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
+    className="group relative flex flex-col p-6 sm:p-8 rounded-3xl border border-white/15 bg-[#111111]/80 backdrop-blur-md 
+      hover:bg-[#1a1a1a] hover:border-white/20 transition-colors duration-500 ease-out overflow-hidden h-[260px] lg:h-[260px] min-h-[220px]"
   >
     {/* Subtle glow effect on hover */}
     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:to-orange-500/5 transition-colors duration-500" />
 
     <div className="relative flex justify-between items-start mb-10 z-10">
-      <div className="text-orange-500 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+      <motion.div
+        className="text-orange-500"
+        whileHover={{ scale: 1.2, rotate: 8 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+      >
         {CustomIcons[index]}
-      </div>
+      </motion.div>
     </div>
 
     <div className="relative z-10 mt-auto">
@@ -167,31 +181,13 @@ const ServiceCard = ({ service, index, className = '' }) => (
         {service.desc}
       </p>
     </div>
-  </div>
+  </motion.div>
 );
 
 const ServicesSection = () => {
-  const sectionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="services"
-      ref={sectionRef}
       className="relative w-full py-24 sm:py-32 overflow-hidden bg-black"
     >
       {/* ── Background Gradients ── */}
@@ -212,54 +208,33 @@ const ServicesSection = () => {
 
         {/* ── Header ── */}
         <div className="text-center max-w-3xl mx-auto mb-20 sm:mb-24">
-          <p
-            className={`text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4
-              transition-all duration-700 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            [ Our Services ]
-          </p>
-          <h2
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6
-              transition-all duration-700 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            End-to-End Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Solutions</span>
-          </h2>
-          <p
-            className={`text-white/50 text-base sm:text-lg leading-relaxed
-              transition-all duration-700 delay-100 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            We provide end-to-end digital solutions to help businesses build, scale, and grow with technology.
-          </p>
+          <FadeUp>
+            <p className="text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4">
+              [ Our Services ]
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6">
+              End-to-End Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Solutions</span>
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <p className="text-white/50 text-base sm:text-lg leading-relaxed">
+              We provide end-to-end digital solutions to help businesses build, scale, and grow with technology.
+            </p>
+          </FadeUp>
         </div>
 
-        {/* ── Desktop Grid (4x2 Layout) ── */}
-        <div className="hidden lg:grid grid-cols-4 gap-5">
+        {/* ── Cards Grid with Stagger ── */}
+        <StaggerContainer stagger={0.08} delay={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service, idx) => (
             <ServiceCard
               key={service.id}
               service={service}
               index={idx}
-              className={`h-[260px] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${idx * 100}ms` }}
             />
           ))}
-        </div>
-
-        {/* ── Mobile/Tablet Grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:hidden">
-          {services.map((service, idx) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              index={idx}
-              className={`min-h-[220px] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${idx * 100}ms` }}
-            />
-          ))}
-        </div>
+        </StaggerContainer>
 
       </div>
     </section>

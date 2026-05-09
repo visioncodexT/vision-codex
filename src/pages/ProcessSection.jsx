@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { FadeUp, StaggerContainer, motion } from '../utils/animations';
 
 const steps = [
   {
@@ -46,26 +46,9 @@ const steps = [
 ];
 
 const ProcessSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="process"
       className="relative w-full py-24 sm:py-32 overflow-hidden bg-black"
     >
@@ -85,27 +68,21 @@ const ProcessSection = () => {
 
         {/* ── Header ── */}
         <div className="text-center max-w-3xl mx-auto">
-          <p
-            className={`text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4
-              transition-all duration-700 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            [ Our Process ]
-          </p>
-          <h2
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6
-              transition-all duration-700 delay-100 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            Building Scalable <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Digital Products</span>
-          </h2>
-          <p
-            className={`text-white/50 text-sm sm:text-base leading-relaxed
-              transition-all duration-700 delay-200 ease-out
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            A structured and transparent approach to ensure quality, speed, and results at every stage.
-          </p>
+          <FadeUp>
+            <p className="text-orange-500 font-mono text-sm sm:text-base tracking-[0.2em] uppercase mb-4">
+              [ Our Process ]
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+              Building Scalable <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">Digital Products</span>
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <p className="text-white/50 text-sm sm:text-base leading-relaxed">
+              A structured and transparent approach to ensure quality, speed, and results at every stage.
+            </p>
+          </FadeUp>
         </div>
 
         {/* ── Mobile: Timeline Track (Horizontal Scroll) ── */}
@@ -123,12 +100,13 @@ const ProcessSection = () => {
           {/* Scrollable Container */}
           <div className="flex gap-2 sm:gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x relative z-10">
             {steps.map((step, idx) => (
-              <div
+              <motion.div
                 key={step.id}
-                className={`relative flex flex-col items-center justify-end flex-shrink-0 w-[260px] sm:w-[280px] snap-center group
-                  transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]
-                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
-                style={{ transitionDelay: `${300 + (idx * 150)}ms` }}
+                className="relative flex flex-col items-center justify-end flex-shrink-0 w-[260px] sm:w-[280px] snap-center group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
 
                 {/* Content Box */}
@@ -157,7 +135,7 @@ const ProcessSection = () => {
                     {step.time}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
             {/* Spacer for right padding in overflow */}
             <div className="w-8 sm:w-16 flex-shrink-0" />
@@ -194,12 +172,15 @@ const ProcessSection = () => {
             if (idx === 5) colClass = 'col-start-1 row-start-2';
 
             return (
-              <div
+              <motion.div
                 key={step.id}
-                className={`relative flex flex-col items-center text-center p-8 rounded-3xl border border-white/15 bg-[#0a0a0a]/80 backdrop-blur-md group hover:bg-[#111] hover:border-orange-500/50 transition-all duration-500 z-10 shadow-xl
-                  ${colClass}
-                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
-                style={{ transitionDelay: `${300 + (idx * 150)}ms` }}
+                className={`relative flex flex-col items-center text-center p-8 rounded-3xl border border-white/15 bg-[#0a0a0a]/80 backdrop-blur-md group hover:bg-[#111] hover:border-orange-500/50 transition-colors duration-500 z-10 shadow-xl
+                  ${colClass}`}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
                 <div className="text-orange-500/20 text-5xl font-bold mb-4 font-mono transition-colors duration-500 group-hover:text-orange-500/50">
                   {step.id}
@@ -216,7 +197,7 @@ const ProcessSection = () => {
                     {step.time}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
