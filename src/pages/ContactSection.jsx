@@ -39,7 +39,13 @@ const ContactSection = () => {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      const responseText = await response.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        data = { error: responseText.slice(0, 150) || 'An unexpected server error occurred.' };
+      }
 
       if (response.ok) {
         setStatus({ submitting: false, submitted: true, error: null });
@@ -54,9 +60,10 @@ const ContactSection = () => {
         });
         setTimeout(() => setStatus(prev => ({ ...prev, submitted: false })), 5000);
       } else {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(data.error || 'Failed to send message');
       }
     } catch (err) {
+      console.error('Submission error:', err);
       setStatus({ submitting: false, submitted: false, error: err.message });
     }
   };
