@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-const navLinks = ['Home', 'Services', 'About Us', 'Projects', 'Testimonials', 'Contact'];
+const navLinks = ['Home', 'Services', 'About Us', 'Testimonials'];
 
 const NavFace = ({ theme, mobileOpen, setMobileOpen }) => {
   const isLight = theme === 'light';
-  
+
   // Theme-specific styles
   const logoSrc = isLight ? '/logo-black.png' : '/logo.png';
   const textColor = isLight ? 'text-black/60' : 'text-white/60';
@@ -121,7 +121,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial check on mount
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
