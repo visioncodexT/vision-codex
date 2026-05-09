@@ -13,6 +13,16 @@ const services = [
   },
   {
     id: '02',
+    title: 'App Development',
+    desc: 'Creating powerful mobile and cross-platform applications with intuitive UI and seamless performance.',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 text-orange-500" fill="currentColor">
+        <path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5-3H7V4h10v13z" />
+      </svg>
+    ),
+  },
+  {
+    id: '03',
     title: 'SaaS Development',
     desc: 'Architecting robust web applications and intuitive dashboards designed for long-term scalable growth.',
     icon: (
@@ -22,7 +32,7 @@ const services = [
     ),
   },
   {
-    id: '03',
+    id: '04',
     title: 'UI/UX Design',
     desc: 'Crafting immersive, pixel-perfect interfaces focused on maximizing user engagement and driving conversions.',
     icon: (
@@ -32,7 +42,7 @@ const services = [
     ),
   },
   {
-    id: '04',
+    id: '05',
     title: 'E-commerce Solutions',
     desc: 'Building high-converting digital storefronts with frictionless checkout and seamless integrations.',
     icon: (
@@ -44,7 +54,7 @@ const services = [
     ),
   },
   {
-    id: '05',
+    id: '06',
     title: 'API & Backend',
     desc: 'Developing secure, high-availability backend architectures to power your platforms efficiently.',
     icon: (
@@ -56,12 +66,26 @@ const services = [
     ),
   },
   {
-    id: '06',
-    title: 'Maintenance & Support',
+    id: '07',
+    title: 'Maintenance',
     desc: 'Providing proactive monitoring, continuous optimization, and reliable support for sustained performance.',
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg>
+    ),
+  },
+  {
+    id: '08',
+    title: 'Consulting',
+    desc: 'Guiding digital transformation with strategic planning and expert recommendations tailored to your goals.',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="1" />
+        <circle cx="19" cy="5" r="1" />
+        <circle cx="5" cy="19" r="1" />
+        <line x1="12" y1="12" x2="19" y2="5" />
+        <line x1="12" y1="12" x2="5" y2="19" />
       </svg>
     ),
   },
@@ -98,6 +122,16 @@ const AbstractIcons = {
       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
     </svg>
   ),
+  MaintenanceSupport: () => (
+    <svg viewBox="0 0 24 24" className="w-7 h-7 text-orange-500" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h4v2h-4v-2zm0-6h4v4h-4v-4zm0-6h4v4h-4V5z" />
+    </svg>
+  ),
+  ConsultingStrategy: () => (
+    <svg viewBox="0 0 24 24" className="w-7 h-7 text-orange-500" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+    </svg>
+  ),
 };
 
 const CustomIcons = [
@@ -107,6 +141,8 @@ const CustomIcons = [
   <AbstractIcons.CostEfficiency key="4" />,
   <AbstractIcons.Integration key="5" />,
   <AbstractIcons.FutureProof key="6" />,
+  <AbstractIcons.MaintenanceSupport key="7" />,
+  <AbstractIcons.ConsultingStrategy key="8" />,
 ];
 
 const ServiceCard = ({ service, index, className = '' }) => (
@@ -118,9 +154,6 @@ const ServiceCard = ({ service, index, className = '' }) => (
     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:to-orange-500/5 transition-colors duration-500" />
 
     <div className="relative flex justify-between items-start mb-10 z-10">
-      <span className="text-white/40 font-mono text-sm tracking-widest group-hover:text-white/60 transition-colors">
-        [{service.id}]
-      </span>
       <div className="text-orange-500 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
         {CustomIcons[index]}
       </div>
@@ -202,46 +235,17 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* ── Desktop Asymmetric Grid (matches reference image) ── */}
+        {/* ── Desktop Grid (4x2 Layout) ── */}
         <div className="hidden lg:grid grid-cols-4 gap-5">
-
-          {/* Column 1 */}
-          <div className="flex flex-col gap-5 pt-8">
-            <ServiceCard service={services[0]} index={0} className="h-[260px]" />
-            <ServiceCard service={services[3]} index={3} className="h-[260px]" />
-          </div>
-
-          {/* Column 2 */}
-          <div className="flex flex-col gap-5 pt-[150px]">
-            <ServiceCard service={services[4]} index={4} className="h-[260px]" />
-          </div>
-
-          {/* Column 3 */}
-          <div className="flex flex-col gap-5 pt-8">
-            <ServiceCard service={services[1]} index={1} className="h-[260px]" />
-            <ServiceCard service={services[5]} index={5} className="h-[260px]" />
-          </div>
-
-          {/* Column 4 */}
-          <div className="flex flex-col gap-5 pt-8">
-            <ServiceCard service={services[2]} index={2} className="h-[260px]" />
-
-            {/* Decorative Element */}
-            <div className="relative h-[260px] flex items-center justify-center">
-              {/* Stacked floating glass cards */}
-              <div className="absolute w-32 h-32 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-md transform -rotate-12 translate-x-[-40px] translate-y-[20px] flex items-center justify-center">
-                <span className="text-white/20 text-2xl font-light">+</span>
-              </div>
-              <div className="absolute w-28 h-28 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-600/10 border border-white/15 backdrop-blur-lg transform rotate-6 translate-x-[20px] translate-y-[-10px] flex items-center justify-center shadow-[0_0_30px_rgba(255,107,53,0.15)] animate-float">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 blur-md opacity-80" />
-              </div>
-              <div className="absolute w-24 h-24 rounded-2xl bg-[#0a0a0a] border border-white/15 backdrop-blur-md transform rotate-12 translate-x-[50px] translate-y-[50px] flex items-center justify-center shadow-xl">
-                <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                </svg>
-              </div>
-            </div>
-          </div>
+          {services.map((service, idx) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={idx}
+              className={`h-[260px] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${idx * 100}ms` }}
+            />
+          ))}
         </div>
 
         {/* ── Mobile/Tablet Grid ── */}

@@ -3,52 +3,34 @@ import { useEffect, useRef, useState } from 'react';
 /* ── Testimonial Data ── */
 const testimonials = [
   {
-    text: "Vision TechX built our entire platform from scratch. Their attention to detail and clean code quality is unmatched. The team delivered ahead of schedule and the final product exceeded all our expectations.",
-    name: "Rahul Sharma",
-    role: "CEO",
-    company: "TechStart India",
+    text: "When we needed to build Sanskar School Online Platform, Vision TechX gave us perfect guidance. They understood everything clearly and created an amazing platform for us. Really impressed!",
+    name: "Mr. Shiv Menariya",
+    company: "Sanskar School Online Platform",
   },
   {
-    text: "Working with Vision TechX was an absolute pleasure. They transformed our outdated website into a modern, high-converting platform. Our online leads increased by 3x within the first month of launch.",
-    name: "Priya Patel",
-    role: "Marketing Director",
-    company: "GrowthBox",
+    text: "The website they created for Shri Kishan Restaurant is simply amazing! Our customers can order easily now and our business has grown so much. We are very thankful to Vision TechX.",
+    name: "Mr. Narpat Menaria",
+    company: "Shri Kishan Restaurant",
   },
   {
-    text: "The team's ability to understand our vision and translate it into a beautiful, functional product is remarkable. They didn't just build a website — they built a digital experience that our customers love.",
-    name: "Amit Verma",
-    role: "Founder",
-    company: "CloudNine Solutions",
+    text: "Vision TechX was very helpful in building the Shree Ji Quick Funds Web App. They created a user-friendly platform that our customers love. Everything was made with great care and attention.",
+    name: "Mr Manish Menariya",
+    company: "Shree Ji Quick Funds",
   },
   {
-    text: "We needed a complex SaaS dashboard built in record time. Vision TechX not only delivered on time but also suggested improvements we hadn't even considered. True partners in every sense.",
-    name: "Sneha Gupta",
-    role: "Product Manager",
-    company: "DataSync",
+    text: "The platform they built for CTONE Solar is completely perfect. The team finished the work quickly and everything works without any problems. They are really talented people.",
+    name: "Mr Rohit Joshi",
+    company: "CTONE Solar",
   },
   {
-    text: "Their design sense is exceptional. Every pixel, every interaction feels intentional and premium. If you want a website that stands out from the competition, Vision TechX is the team to hire.",
-    name: "Vikram Singh",
-    role: "Creative Director",
-    company: "Brandify Agency",
+    text: "Vision TechX provided excellent services for Nikul Pharma Equipments. The solutions they delivered were very efficient and professional. They helped us take our business online smoothly.",
+    name: "Mr Nikul Jadeja",
+    company: "Nikul Pharma Equipments",
   },
   {
-    text: "From the initial consultation to the final deployment, the communication was seamless. They kept us in the loop at every stage and were always open to feedback. Highly recommend their services.",
-    name: "Neha Kapoor",
-    role: "Operations Head",
-    company: "FinEdge",
-  },
-  {
-    text: "Vision TechX helped us migrate our legacy system to a modern stack without any downtime. Their technical expertise and problem-solving skills are truly world-class. We couldn't be happier.",
-    name: "Arjun Mehta",
-    role: "CTO",
-    company: "ScaleUp Labs",
-  },
-  {
-    text: "What impressed me most was their proactive approach. They didn't just follow instructions — they brought creative ideas to the table that genuinely improved our product and user experience.",
-    name: "Kavita Reddy",
-    role: "Startup Founder",
-    company: "EduLearn",
+    text: "For the Green Era project, Vision TechX did excellent work. The team was very professional and delivered everything on time. The final result was much better than what we expected.",
+    name: "Mr Khunt Meet",
+    company: "Green Era",
   },
 ];
 
@@ -104,7 +86,7 @@ const TestimonialCard = ({ testimonial, offset, onMouseEnter, onMouseLeave }) =>
               {testimonial.name}
             </p>
             <p className="text-[10px] text-white/40 group-hover:text-black/50 uppercase tracking-[0.15em] font-medium transition-colors duration-500">
-              {testimonial.role} · {testimonial.company}
+              {testimonial.company}
             </p>
           </div>
         </div>
