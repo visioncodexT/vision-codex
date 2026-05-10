@@ -6,7 +6,7 @@ const ComingSoon = () => {
     // ─────────────────────────────────────────────────────────
     // ADJUST LAUNCH TIME HERE
     // ─────────────────────────────────────────────────────────
-    const LAUNCH_DATE = "2026-05-10T10:15:00";
+    const LAUNCH_DATE = "2026-05-10T10:21:00";
     // ─────────────────────────────────────────────────────────
 
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
