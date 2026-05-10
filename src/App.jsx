@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <main className="bg-black min-h-screen relative">
-      {/* {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       <Navbar />
       <Hero />
       <ServicesSection />
@@ -23,9 +23,9 @@ const App = () => {
       <ProcessSection />
       <Testimonials />
       <ContactSection />
-      <Footer /> */}
+      <Footer />
 
-      <ComingSoon />
+      {/* <ComingSoon /> */}
     </main>
   );
 };
