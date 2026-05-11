@@ -25,7 +25,7 @@ const App = () => {
       <ContactSection />
       <Footer />
 
-      {/* <ComingSoon /> */}
+      
     </main>
   );
 };

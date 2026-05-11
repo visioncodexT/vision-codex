@@ -102,7 +102,7 @@ const Hero = () => {
                                     uppercase tracking-wider border border-white/[0.2]
                                     transition-all duration-300"
                             >
-                                View Our Work
+                                View Our Services
                             </motion.a>
                         </StaggerItem>
                     </StaggerContainer>

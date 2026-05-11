@@ -23,11 +23,11 @@ const testimonials = [
     name: "Mr Rohit Joshi",
     company: "CTONE Solar",
   },
-  {
-    text: "Vision TechX provided excellent services for Nikul Pharma Equipments. The solutions they delivered were very efficient and professional. They helped us take our business online smoothly.",
-    name: "Mr Nikul Jadeja",
-    company: "Nikul Pharma Equipments",
-  },
+  // {
+  //   text: "Vision TechX provided excellent services for Nikul Pharma Equipments. The solutions they delivered were very efficient and professional. They helped us take our business online smoothly.",
+  //   name: "Mr Nikul Jadeja",
+  //   company: "Nikul Pharma Equipments",
+  // },
   {
     text: "For the Green Era project, Vision TechX did excellent work. The team was very professional and delivered everything on time. The final result was much better than what we expected.",
     name: "Mr Khunt Meet",
