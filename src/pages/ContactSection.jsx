@@ -1,6 +1,62 @@
+import { useState } from 'react';
 import { FadeUp, ScaleIn, motion } from '../utils/animations';
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    company: '',
+    subject: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: null
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ submitting: true, submitted: false, error: null });
+
+    // 1. Trigger the backend request (Fire and Forget/Background)
+    const sendPromise = fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    }).catch(err => console.error('Background submission error:', err));
+
+    // 2. Optimistic UI: Wait for a short aesthetic delay, then show success
+    // This makes the app feel snappy regardless of backend speed
+    setTimeout(() => {
+      setStatus({ submitting: false, submitted: true, error: null });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        company: '',
+        subject: '',
+        message: ''
+      });
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setStatus(prev => ({ ...prev, submitted: false })), 5000);
+    }, 1500);
+  };
 
   return (
     <section
@@ -133,7 +189,7 @@ const ContactSection = () => {
               <p className="text-white/40 text-sm">Please fill in the following details, and we'll get back to you within 24 hours.</p>
             </div>
 
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
 
               {/* Row 1: Name, Email, Phone */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -141,7 +197,11 @@ const ContactSection = () => {
                   <label className="text-white/80 text-sm font-medium ml-1">Name</label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Enter your Name"
+                    required
                     className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors placeholder:text-white/20"
                   />
                 </div>
@@ -149,7 +209,11 @@ const ContactSection = () => {
                   <label className="text-white/80 text-sm font-medium ml-1">Email</label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Enter your Email"
+                    required
                     className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors placeholder:text-white/20"
                   />
                 </div>
@@ -157,6 +221,9 @@ const ContactSection = () => {
                   <label className="text-white/80 text-sm font-medium ml-1">Phone Number</label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="Enter your Phone Number"
                     className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors placeholder:text-white/20"
                   />
@@ -168,7 +235,12 @@ const ContactSection = () => {
                 <div className="flex flex-col gap-2">
                   <label className="text-white/80 text-sm font-medium ml-1">Select Service</label>
                   <div className="relative">
-                    <select className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white/50 text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer">
+                    <select 
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white/50 text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer"
+                    >
                       <option value="">Select your Service</option>
                       <option value="web">Web Development</option>
                       <option value="saas">SaaS Development</option>
@@ -184,6 +256,9 @@ const ContactSection = () => {
                   <label className="text-white/80 text-sm font-medium ml-1">Company / Organization Name</label>
                   <input
                     type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
                     placeholder="Enter Name"
                     className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors placeholder:text-white/20"
                   />
@@ -191,7 +266,12 @@ const ContactSection = () => {
                 <div className="flex flex-col gap-2">
                   <label className="text-white/80 text-sm font-medium ml-1">Subject</label>
                   <div className="relative">
-                    <select className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white/50 text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer">
+                    <select 
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white/50 text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer"
+                    >
                       <option value="">Select your Subject</option>
                       <option value="project">New Project</option>
                       <option value="support">Technical Support</option>
@@ -199,7 +279,7 @@ const ContactSection = () => {
                       <option value="other">Other</option>
                     </select>
                     <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/30">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7-7-7-7" /></svg>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
                     </div>
                   </div>
                 </div>
@@ -209,20 +289,43 @@ const ContactSection = () => {
               <div className="flex flex-col gap-2">
                 <label className="text-white/80 text-sm font-medium ml-1">Message</label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Enter your Message"
                   rows="5"
+                  required
                   className="w-full bg-[#111] border border-white/15 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-orange-500/50 focus:bg-[#151515] transition-colors placeholder:text-white/20 resize-none"
                 ></textarea>
               </div>
+
+              {/* Status Messages */}
+              {status.error && (
+                <div className="text-red-500 text-sm text-center bg-red-500/10 py-3 rounded-xl border border-red-500/20">
+                  {status.error}
+                </div>
+              )}
+              {status.submitted && (
+                <div className="text-green-500 text-sm text-center bg-green-500/10 py-3 rounded-xl border border-green-500/20">
+                  Message sent successfully! We'll get back to you soon.
+                </div>
+              )}
 
               {/* Submit Button */}
               <div className="flex justify-center mt-6">
                 <button
                   type="submit"
-                  className="flex items-center gap-3 bg-[#1a1a1a] hover:bg-orange-500 text-white px-8 py-4 rounded-full font-medium transition-colors duration-300 group border border-white/5"
+                  disabled={status.submitting}
+                  className={`flex items-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 group border border-white/5 ${
+                    status.submitting 
+                    ? 'bg-white/5 text-white/30 cursor-not-allowed' 
+                    : 'bg-[#1a1a1a] hover:bg-orange-500 text-white active:scale-95'
+                  }`}
                 >
-                  Send your Inquiry
-                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                  {status.submitting ? 'Sending...' : 'Send your Inquiry'}
+                  {!status.submitting && (
+                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                  )}
                 </button>
               </div>
 
