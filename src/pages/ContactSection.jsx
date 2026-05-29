@@ -84,99 +84,99 @@ const ContactSection = () => {
           {/* ── Contact Info Cards (Image 1) ── */}
           <FadeUp delay={0.15} className="flex flex-col gap-8">
             {/* Email Section */}
-            <div className="rounded-3xl border border-white/15 bg-[#0a0a0a]/50 p-8 sm:p-10 backdrop-blur-sm">
+            <div className="rounded-3xl border border-white/15 bg-[#0a0a0a]/50 p-5 xs:p-6 sm:p-10 backdrop-blur-sm">
               <h3 className="text-white text-center font-medium text-lg mb-10">Contact Us Via Email</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Email Item 1 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">For General Inquiries</span>
-                  <div className="flex items-center justify-between rounded-full border border-white/15 bg-[#111] p-2 pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                      <span className="text-white/80 text-sm font-medium">info@visiontechx.com</span>
+                  <a href="mailto:info@visiontechx.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">info@visiontechx.com</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </div>
-                  </div>
+                  </a>
                 </div>
 
                 {/* Email Item 2 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">For Business Collaborations</span>
-                  <div className="flex items-center justify-between rounded-full border border-white/15 bg-[#111] p-2 pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                      <span className="text-white/80 text-sm font-medium">partnerships@visiontechx.com</span>
+                  <a href="mailto:partnerships@visiontechx.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">partnerships@visiontechx.com</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </div>
-                  </div>
+                  </a>
                 </div>
 
                 {/* Email Item 3 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">For Job Opportunities</span>
-                  <div className="flex items-center justify-between rounded-full border border-white/15 bg-[#111] p-2 pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                      <span className="text-white/80 text-sm font-medium">careers@visiontechx.com</span>
+                  <a href="mailto:careers@visiontechx.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">careers@visiontechx.com</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Phone Section */}
-            <div className="rounded-3xl border border-white/5 bg-[#0a0a0a]/50 p-8 sm:p-10 backdrop-blur-sm">
+            <div className="rounded-3xl border border-white/5 bg-[#0a0a0a]/50 p-5 xs:p-6 sm:p-10 backdrop-blur-sm">
               <h3 className="text-white text-center font-medium text-lg mb-10">Contact Us By Phone</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Phone Item 1 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">General Enquiries</span>
-                  <div className="flex items-center justify-between rounded-full border border-white/15 bg-[#111] p-2 pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                      <span className="text-white/80 text-sm font-medium">+91 94298 06474</span>
+                  <a href="tel:+919429806474" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">+91 94298 06474</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </div>
-                  </div>
+                  </a>
                 </div>
 
                 {/* Phone Item 2 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">Business Collaborations</span>
-                  <div className="flex items-center justify-between rounded-full border border-white/15 bg-[#111] p-2 pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                      <span className="text-white/80 text-sm font-medium">+91 70141 98701</span>
+                  <a href="tel:+917014198701" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">+91 70141 98701</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </div>
-                  </div>
+                  </a>
                 </div>
 
                 {/* Phone Item 3 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">Free Consultation</span>
-                  <div className="flex items-center justify-between rounded-full border border-white/15 bg-[#111] p-2 pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                      <span className="text-white/80 text-sm font-medium">+91 89555 31832</span>
+                  <a href="tel:+918955531832" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                      <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">+91 89555 31832</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
