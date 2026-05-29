@@ -113,7 +113,7 @@ const Hero = () => {
             </div>
 
             {/* ── Floating Glass Card ── */}
-            <FadeUp delay={1} className="absolute bottom-10 right-6 sm:right-10 md:right-16 lg:right-24 z-[4]">
+            {/* <FadeUp delay={1} className="absolute bottom-10 right-6 sm:right-10 md:right-16 lg:right-24 z-[4]">
                 <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -147,7 +147,7 @@ const Hero = () => {
                         <path d="M10 2L12.39 7.26L18 8.27L14 12.14L14.82 18L10 15.27L5.18 18L6 12.14L2 8.27L7.61 7.26L10 2Z" />
                     </motion.svg>
                 </motion.div>
-            </FadeUp>
+            </FadeUp> */}
         </section>
     );
 };
