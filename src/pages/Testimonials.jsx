@@ -35,8 +35,8 @@ const testimonials = [
   },
   {
     text: "We wanted a simple and professional website for our school, and the Vision TechX delivered exactly what we needed. The design is clean, easy to navigate, and has received positive feedback from both parents and students. Thank you for the excellent work.",
-    name: "Mr Satyanarayan Menariya & Mr DS Menariya",
-    company: "Happy School ",
+    name: "Mr Satyanarayan Menariya  & Mr DS Menariya",
+    company: "Happy School",
   },
 ];
 
@@ -57,7 +57,7 @@ const TestimonialCard = ({ testimonial, offset, onMouseEnter, onMouseLeave }) =>
         className="relative h-full rounded-2xl p-7 sm:p-8 border border-white/15
           bg-[#111111] transition-all duration-500 ease-out
           group-hover:bg-[#E8461E] group-hover:border-[#E8461E]/50
-          group-hover:shadow-[0_20px_60px_rgba(232,70,30,0.25)]"
+          group-hover:shadow-[0_20px_60px_rgba(232,70,30,0.25)] flex flex-col justify-between"
       >
         {/* Quote mark - top left */}
         <svg
@@ -82,17 +82,22 @@ const TestimonialCard = ({ testimonial, offset, onMouseEnter, onMouseLeave }) =>
           {testimonial.text}
         </p>
 
-        {/* Author */}
-        <div className="relative z-10 flex items-center gap-3 mt-auto">
-          {/* Avatar placeholder */}
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 group-hover:from-black/20 group-hover:to-black/30 flex items-center justify-center text-white text-xs font-bold transition-all duration-500 flex-shrink-0">
-            {testimonial.name.split(' ').map(n => n[0]).join('')}
+        {/* Author Details (Guaranteed No Overlap layout) */}
+        <div className="relative z-10 flex flex-row items-center gap-5 mt-auto w-full pt-4">
+          {/* Avatar placeholder - explicitly locked dimensions */}
+          <div 
+            className="rounded-full bg-gradient-to-br from-orange-500 to-red-600 group-hover:from-black/20 group-hover:to-black/30 flex items-center justify-center text-white text-[10px] font-bold transition-all duration-500 flex-shrink-0 select-none"
+            style={{ width: '48px', height: '48px', minWidth: '48px', minHeight: '48px' }}
+          >
+            {testimonial.name.split(' ').map(n => n[0]).join('').slice(0, 4)}
           </div>
-          <div>
-            <p className="text-sm font-semibold text-white group-hover:text-black transition-colors duration-500">
+          
+          {/* Text block container constraints */}
+          <div className="flex flex-col min-w-0 justify-center">
+            <p className="text-sm font-bold text-white group-hover:text-black transition-colors duration-500 leading-snug break-words">
               {testimonial.name}
             </p>
-            <p className="text-[10px] text-white/40 group-hover:text-black/50 uppercase tracking-[0.15em] font-medium transition-colors duration-500">
+            <p className="text-[10px] text-white/40 group-hover:text-black/50 uppercase tracking-[0.15em] font-semibold transition-colors duration-500 mt-1">
               {testimonial.company}
             </p>
           </div>
@@ -163,8 +168,6 @@ const Testimonials = () => {
         className={`relative transition-all duration-1000 delay-300
           ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       >
-
-
         {/* Scrolling track */}
         <div
           className="flex gap-6 sm:gap-8 items-start"
