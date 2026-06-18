@@ -33,6 +33,11 @@ const testimonials = [
     name: "Mr Khunt Meet",
     company: "Green Era",
   },
+  {
+    text: "We wanted a simple and professional website for our school, and the Vision TechX delivered exactly what we needed. The design is clean, easy to navigate, and has received positive feedback from both parents and students. Thank you for the excellent work.",
+    name: "Mr Satyanarayan Menariya & Mr DS Menariya",
+    company: "Happy School ",
+  },
 ];
 
 /* ── Vertical offset patterns for staggered look ── */
