@@ -1,6 +1,6 @@
-# https://www.visiontechx.com - Vision TechX by Pandawas Group
+# https://www.visioncodex.com - Vision CodeX by Pandawas Group
 
 User-agent: *
 Allow: /
 
-Sitemap: https://www.visiontechx.com/sitemap.xml
+Sitemap: https://www.visioncodex.com/sitemap.xml

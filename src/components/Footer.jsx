@@ -26,9 +26,9 @@ const Footer = () => {
                 transition={{ duration: 1, ease: "easeInOut" }}
                 className="flex items-center justify-center w-12 h-12 bg-white/5 rounded-full border border-white/15"
               >
-                <img src="/logo.png" alt="VisionTechX Logo" className="w-8 h-8 object-contain" />
+                <img src="/logo.png" alt="VisionCodeX Logo" className="w-8 h-8 object-contain" />
               </motion.div>
-              <span className="text-white font-bold text-xl tracking-wide">Vision TechX</span>
+              <span className="text-white font-bold text-xl tracking-wide">Vision CodeX</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed max-w-sm mb-8">
               We design, build, and scale high-performance digital products. Elevating brands through intelligent architecture and immersive design.
@@ -77,11 +77,11 @@ const Footer = () => {
           <FadeUp delay={0.2} className="md:col-span-3 flex flex-col gap-4">
             <h4 className="text-white font-semibold mb-2">Say Hello</h4>
             <motion.a 
-              href="mailto:info@visiontechx.com" 
+              href="mailto:info@visioncodex.com" 
               whileHover={{ x: 5, color: "#ffffff" }}
               className="text-white/50 text-sm transition-colors"
             >
-              info@visiontechx.com
+              info@visioncodex.com
             </motion.a>
             <motion.a 
               href="tel:+919429806474" 
@@ -113,14 +113,14 @@ const Footer = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="whitespace-nowrap text-[14vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/0 leading-none select-none tracking-tighter"
           >
-            VISION TECHX
+            VISION CODEX
           </motion.h1>
         </div>
 
         {/* ── Copyright ── */}
         <FadeUp delay={0.4} className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 border-t border-white/5 pt-6 mt-2 relative z-20">
           <p className="text-white/40 text-xs text-center md:text-left flex-1">
-            &copy; {new Date().getFullYear()} Vision TechX. All rights reserved.
+            &copy; {new Date().getFullYear()} Vision CodeX. All rights reserved.
           </p>
 
           <div className="flex items-center justify-center flex-1">

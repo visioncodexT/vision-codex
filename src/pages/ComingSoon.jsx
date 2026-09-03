@@ -47,7 +47,7 @@ const RebrandAnnouncement = () => {
                             <div className="w-full h-full rounded-2xl bg-black/40 flex items-center justify-center overflow-hidden p-2">
                                 <img
                                     src="/codex_logo.jpg"
-                                    alt="Vision Codex Logo"
+                                    alt="Vision CodeX Logo"
                                     className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                 />
@@ -66,7 +66,7 @@ const RebrandAnnouncement = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 font-extrabold">Vision Codex</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 font-extrabold">Vision CodeX</span>
                     </motion.div>
 
                     {/* Announcement Text */}
@@ -76,7 +76,7 @@ const RebrandAnnouncement = () => {
                         transition={{ delay: 0.5 }}
                         className="text-zinc-400 text-sm md:text-base max-w-sm leading-relaxed font-normal mb-6"
                     >
-                        We are excited to announce that <strong className="text-white">Vision TechX</strong> is officially becoming <strong className="text-amber-300">Vision Codex</strong>. Same team, fresh new identity.
+                        We are excited to announce that <strong className="text-white">Vision TechX</strong> is officially becoming <strong className="text-amber-300">Vision CodeX</strong>. Same team, fresh new identity.
                     </motion.p>
 
                     {/* Domain & Contact Badges */}
@@ -215,7 +215,7 @@ export default RebrandAnnouncement;
 //                         animate={{ opacity: 1, y: 0 }}
 //                         transition={{ delay: 0.3 }}
 //                         src="/logo.png"
-//                         alt="Vision Tech x Logo"
+//                         alt="Vision CodeX Logo"
 //                         className="w-20 md:w-24 h-auto mb-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] object-contain"
 //                         onError={(e) => { e.target.style.display = 'none'; }}
 //                     />
@@ -273,7 +273,7 @@ export default RebrandAnnouncement;
 //                         </a>
 
 //                         <p className="text-[10px] text-white/30 tracking-[0.3em] uppercase font-bold mt-2">
-//                             Vision Codex &bull; Pandawas Group
+//                             Vision CodeX &bull; Pandawas Group
 //                         </p>
 //                     </motion.div>
 //                 </div >

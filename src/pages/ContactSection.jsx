@@ -91,10 +91,10 @@ const ContactSection = () => {
                 {/* Email Item 1 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">For General Inquiries</span>
-                  <a href="mailto:info@visiontechx.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                  <a href="mailto:info@visioncodex.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
                     <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                       <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">info@visiontechx.com</span>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">info@visioncodex.com</span>
                     </div>
                     <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
@@ -105,10 +105,10 @@ const ContactSection = () => {
                 {/* Email Item 2 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">For Business Collaborations</span>
-                  <a href="mailto:partnerships@visiontechx.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                  <a href="mailto:partnerships@visioncodex.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
                     <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                       <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">partnerships@visiontechx.com</span>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">partnerships@visioncodex.com</span>
                     </div>
                     <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
@@ -119,10 +119,10 @@ const ContactSection = () => {
                 {/* Email Item 3 */}
                 <div className="flex flex-col gap-3">
                   <span className="text-white/40 text-sm ml-2">For Job Opportunities</span>
-                  <a href="mailto:careers@visiontechx.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
+                  <a href="mailto:careers@visioncodex.com" className="flex items-center justify-between rounded-2xl sm:rounded-full border border-white/15 bg-[#111] p-1.5 pl-4 sm:p-2 sm:pl-5 group hover:border-orange-500/50 hover:bg-[#151515] transition-colors cursor-pointer min-w-0 w-full">
                     <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                       <svg className="w-4 h-4 text-white/50 group-hover:text-orange-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">careers@visiontechx.com</span>
+                      <span className="text-white/80 text-xs sm:text-sm font-medium break-all sm:break-normal">careers@visioncodex.com</span>
                     </div>
                     <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-orange-500 transition-colors shrink-0 ml-2">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>

@@ -75,7 +75,7 @@ const Hero = () => {
 
                         <StaggerItem>
                             <p className="text-base sm:text-lg text-white/40 max-w-md leading-relaxed font-light">
-                                Vision TechX helps startups and businesses design, develop, and scale modern websites and applications that drive real growth.
+                                Vision CodeX helps startups and businesses design, develop, and scale modern websites and applications that drive real growth.
                             </p>
                         </StaggerItem>
 

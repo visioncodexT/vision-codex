@@ -24,8 +24,8 @@ export default async function handler(req, res) {
     // 4. Send Email
     // Using ONLY ONE recipient to stay within Resend Free/Onboarding limits
     const { data, error } = await resend.emails.send({
-      from: 'VisionTechX <onboarding@resend.dev>',
-      to: 'info.visiontechx@gmail.com', 
+      from: 'VisionCodeX <onboarding@resend.dev>',
+      to: 'info.visioncodex@gmail.com', 
       subject: `New Inquiry: ${subject || 'General'}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">

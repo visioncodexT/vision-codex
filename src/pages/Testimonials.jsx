@@ -4,17 +4,17 @@ import { FadeUp, motion } from '../utils/animations';
 /* ── Testimonial Data ── */
 const testimonials = [
   {
-    text: "When we needed to build Sanskar School Online Platform, Vision TechX gave us perfect guidance. They understood everything clearly and created an amazing platform for us. Really impressed!",
+    text: "When we needed to build Sanskar School Online Platform, Vision CodeX gave us perfect guidance. They understood everything clearly and created an amazing platform for us. Really impressed!",
     name: "Mr. Shiv Menariya",
     company: "Sanskar School Online Platform",
   },
   {
-    text: "The website they created for Shri Kishan Restaurant is simply amazing! Our customers can order easily now and our business has grown so much. We are very thankful to Vision TechX.",
+    text: "The website they created for Shri Kishan Restaurant is simply amazing! Our customers can order easily now and our business has grown so much. We are very thankful to Vision CodeX.",
     name: "Mr. Narpat Menaria",
     company: "Shri Kishan Restaurant",
   },
   {
-    text: "Vision TechX was very helpful in building the Shree Ji Quick Funds Web App. They created a user-friendly platform that our customers love. Everything was made with great care and attention.",
+    text: "Vision CodeX was very helpful in building the Shree Ji Quick Funds Web App. They created a user-friendly platform that our customers love. Everything was made with great care and attention.",
     name: "Mr Manish Menariya",
     company: "Shree Ji Quick Funds",
   },
@@ -24,17 +24,17 @@ const testimonials = [
     company: "CTONE Solar",
   },
   // {
-  //   text: "Vision TechX provided excellent services for Nikul Pharma Equipments. The solutions they delivered were very efficient and professional. They helped us take our business online smoothly.",
+  //   text: "Vision CodeX provided excellent services for Nikul Pharma Equipments. The solutions they delivered were very efficient and professional. They helped us take our business online smoothly.",
   //   name: "Mr Nikul Jadeja",
   //   company: "Nikul Pharma Equipments",
   // },
   {
-    text: "For the Green Era project, Vision TechX did excellent work. The team was very professional and delivered everything on time. The final result was much better than what we expected.",
+    text: "For the Green Era project, Vision CodeX did excellent work. The team was very professional and delivered everything on time. The final result was much better than what we expected.",
     name: "Mr Khunt Meet",
     company: "Green Era",
   },
   {
-    text: "We wanted a simple and professional website for our school, and the Vision TechX delivered exactly what we needed. The design is clean, easy to navigate, and has received positive feedback from both parents and students. Thank you for the excellent work.",
+    text: "We wanted a simple and professional website for our school, and the Vision CodeX delivered exactly what we needed. The design is clean, easy to navigate, and has received positive feedback from both parents and students. Thank you for the excellent work.",
     name: "Mr Satyanarayan Menariya  & Mr DS Menariya",
     company: "Happy School",
   },

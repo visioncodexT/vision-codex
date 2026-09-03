@@ -254,14 +254,14 @@ const AboutSection = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <h2 className="text-orange-400/90 text-base sm:text-lg font-semibold tracking-wide">
-                About Vision TechX
+                About Vision CodeX
               </h2>
               <div className="hidden sm:block h-px flex-1 bg-white/[0.06]" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 text-[13px] sm:text-sm text-white/50 leading-[1.8]">
               <p>
-                Vision TechX is a tech-driven agency built by a team of passionate
+                Vision CodeX is a tech-driven agency built by a team of passionate
                 developers and designers focused on creating powerful digital solutions.
               </p>
               <p>

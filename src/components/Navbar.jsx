@@ -33,7 +33,7 @@ const NavFace = ({ theme, mobileOpen, setMobileOpen }) => {
           whileHover={{ scale: 1.1, rotate: 5 }}
           className="flex items-center justify-center w-10 h-10 rounded-full ml-1"
         >
-          <img src={logoSrc} alt="VisionTechX" className="w-8 h-8 object-contain" />
+          <img src={logoSrc} alt="VisionCodeX" className="w-8 h-8 object-contain" />
         </motion.div>
 
         {/* Links */}
@@ -69,7 +69,7 @@ const NavFace = ({ theme, mobileOpen, setMobileOpen }) => {
       >
         {/* Logo */}
         <div className={`flex items-center justify-center w-9 h-9 rounded-full ${isLight ? 'bg-black/[0.04]' : 'bg-white/[0.08]'}`}>
-          <img src={logoSrc} alt="VisionTechX" className="w-5 h-5 object-contain" />
+          <img src={logoSrc} alt="VisionCodeX" className="w-5 h-5 object-contain" />
         </div>
 
         {/* Hamburger */}
