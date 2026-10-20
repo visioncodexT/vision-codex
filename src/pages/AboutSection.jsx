@@ -192,8 +192,8 @@ const AboutSection = () => {
 
         {/* ── Left: Stats Boxes ── */}
         <StaggerContainer stagger={0.12} className="md:col-span-3 flex flex-col gap-3 sm:gap-4">
-          <StatBox number="10+" label="Projects Delivered" />
-          <StatBox number="10+" label="Happy Clients" />
+          <StatBox number="20+" label="Projects Delivered" />
+          <StatBox number="25+" label="Happy Clients" />
           <StatBox number="1+" label="Years of Experience" />
         </StaggerContainer>
 
